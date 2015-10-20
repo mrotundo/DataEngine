@@ -19,4 +19,15 @@ abstract class Base extends ProcessesBase
         $output = $this->getOutput();
         $this->save($output);
     }
+    
+    public abstract function api($data=null,$params=null);
+    
+    public function executeAPI($data=null,$params=null)
+    {
+        $this->api($data,$params);
+        $input = $this->getInput();
+        $this->process($input);
+        $output = $this->getOutput();
+        $this->save($output);
+    }
 }
